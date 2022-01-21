@@ -1,0 +1,21 @@
+{
+  "name": "remarkable-raindrop",
+  "version": "1.0.0-alpha.0",
+  "author": {
+    "name": "Gord Lea",
+    "email": "jgordonlea@gmail.com"
+  },
+  "packageManager": "yarn@3.1.1",
+  "scripts": {
+    "start": "node --no-warnings ./lib/cli.mjs"
+  },
+  "dependencies": {
+    "@lumbermill/node": "^1.0.1-beta.1",
+    "dotenv": "^14.2.0",
+    "got": "^12.0.1",
+    "html-pdf-node": "^1.0.8",
+    "remarkable-typescript": "^1.1.3",
+    "uuid": "^8.3.2",
+    "yargs": "^17.3.1"
+  }
+}
