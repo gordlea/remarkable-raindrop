@@ -1,10 +1,12 @@
 # remarkable-raindrop
 
-A service that will sync items from your raindrop.io account to your remarkable tablet in pdf format.
+A service that will sync items from your [raindrop.io](https://raindrop.io/) account to your remarkable tablet in pdf format.
 
-It will watch your raindrop.io account for any items with a certain tag (by default: `on_remarkable`), 
+It will check your raindrop.io account for any items that match a search expression (by default: `#on_remarkable`), 
 and when it finds them, it will simplify the html (using outline.com for now), convert to pdf, then 
 upload to your remarkable account via the cloud api.
+
+The docker container is configured to run periodically.
 
 
 ## Prerequisites
