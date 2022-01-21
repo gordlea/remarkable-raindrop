@@ -1,4 +1,4 @@
-FROM node:17-alpine-slim as setup
+FROM node:17-alpine as setup
 
 RUN mkdir -p /opt/remarkable-raindrop
 WORKDIR /opt/remarkable-raindrop
@@ -8,7 +8,7 @@ COPY .pnp* yarn.lock .yarnrc.yml package.json ./
 RUN yarn
 COPY lib ./lib
 
-FROM node:17-alpine-slim
+FROM node:17-alpine
 
 RUN apk add --no-cache tini \
     chromium \
@@ -28,11 +28,8 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
     RMKDROP_REMARKABLE_DEVICE_TOKEN=""
 
 COPY --from=setup /opt/remarkable-raindrop /opt/remarkable-raindrop
-
 COPY docker_entrypoint.sh docker_run.sh /
 
 WORKDIR /opt/remarkable-raindrop
-
-# ENTRYPOINT ["/docker_entrypoint.sh"]
 ENTRYPOINT ["/sbin/tini", "--", "/docker_entrypoint.sh"]
 CMD ["crond", "-f", "-l", "2"]
